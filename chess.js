@@ -26,10 +26,13 @@ $(function () {
             }
             if(ai){
                 let pos = aifn();
-                console.log(pos);
-                white[coords] = true;
+                white[pos] = true;
                 $('#' +pos).addClass('white');
                 delete blank[pos];
+                if(isSuccess(white,pos)>=5){
+                    console.log('white success');
+                    box.off('click');
+                }
             }
         }else{
                 white[coords] = true;
@@ -49,7 +52,6 @@ $(function () {
             if(score >=whiteScore){
                 whiteScore = score;
                 pos2 = i;
-                console.log(pos2);
             }
 
         }
